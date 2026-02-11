@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Automate Smartfren topup Rp20.000 and pay with DANA (new tab).</description>
+   <name>TC_Topup_Balance_DANA</name>
+   <tag>GenAI</tag>
+   <comment></comment>
+   <origin>STUDIOASSIST</origin>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>5adb29a5-0c1f-4c27-99dc-d2edf3490509</testCaseGuid>
+</TestCaseEntity>

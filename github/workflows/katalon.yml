@@ -1,0 +1,45 @@
+name: Katalon SFWEB Automation Buy Balance Use Dana
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+  workflow_dispatch:
+
+jobs:
+  katalon-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Download Katalon Engine
+        run: |
+          wget https://download.katalon.com/9.6.0/Katalon_Studio_Engine_Linux_64-9.6.0.tar.gz
+          tar -xzf Katalon_Studio_Engine_Linux_64-9.6.0.tar.gz
+
+      - name: Run Katalon Test Case
+        run: |
+          ./Katalon_Studio_Engine_Linux_64-9.6.0/katalonc \
+          -noSplash \
+          -runMode=console \
+          -projectPath="$(pwd)/Automation SFWEB.prj" \
+          -retry=0 \
+          -testSuitePath="Test Suites/Smoke Test" \
+          -executionProfile="default" \
+          -browserType="Chrome"
+
+      - name: Upload Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: katalon-report
+          path: Reports/
