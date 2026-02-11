@@ -26,6 +26,6 @@ jobs:
             -projectPath="/katalon/project/Automation SFWEB.prj" \
             -apiKey="${{ secrets.KATALON_API_KEY }}" \
             -retry=0 \
-            -testCasePath="Test Cases/Smartfren/TC_Topup_Balance_DANA" \
+            -testSuitePath="Test Suites/TS_Buy_Balance_DANA" \
             -executionProfile="default" \
             -browserType="Chrome (headless)"
