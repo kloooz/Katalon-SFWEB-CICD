@@ -26,16 +26,17 @@ jobs:
           wget https://download.katalon.com/9.6.0/Katalon_Studio_Engine_Linux_64-9.6.0.tar.gz
           tar -xzf Katalon_Studio_Engine_Linux_64-9.6.0.tar.gz
 
-      - name: Run Katalon Test Case
+      - name: Activate Katalon
         run: |
           ./Katalon_Studio_Engine_Linux_64-9.6.0/katalonc \
           -noSplash \
           -runMode=console \
           -projectPath="$(pwd)/Automation SFWEB.prj" \
-          -retry=0 \
-          -testSuitePath="Test Suites/Smoke Test" \
+          -apiKey="${{ secrets.KATALON_API_KEY }}" \
+          -testCasePath="Test Cases/Smartfren/TC_Topup_Balance_DANA" \
           -executionProfile="default" \
-          -browserType="Chrome"
+          -browserType="Chrome (headless)"
+
 
       - name: Upload Report
         if: always()
