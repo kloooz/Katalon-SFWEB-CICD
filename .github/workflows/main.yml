@@ -34,15 +34,14 @@ jobs:
           export NO_AT_BRIDGE=1
       
           xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" \
-          ./Katalon_Studio_Engine_Linux_64-9.6.0/katalonc \
-          -noSplash \
-          -runMode=console \
+          ./Katalon_Studio_Engine_Linux_64-9.6.0/katalonc -noSplash -runMode=console \
           -projectPath="$(pwd)/Automation SFWEB.prj" \
           -apiKey="${{ secrets.KATALON_API_KEY }}" \
           -retry=0 \
           -testCasePath="Test Cases/Smartfren/TC_Topup_Balance_DANA" \
           -executionProfile="default" \
           -browserType="Chrome"
+
 
 
 
