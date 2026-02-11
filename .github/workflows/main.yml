@@ -26,12 +26,13 @@ jobs:
           wget https://download.katalon.com/9.6.0/Katalon_Studio_Engine_Linux_64-9.6.0.tar.gz
           tar -xzf Katalon_Studio_Engine_Linux_64-9.6.0.tar.gz
 
-      - name: Run Katalon Test Case
+      - name: Run Katalon Test
         run: |
           sudo apt-get update
-          sudo apt-get install -y xvfb
+          sudo apt-get install -y xvfb libgtk-3-0 libxss1 libasound2 libnss3
       
-          xvfb-run ./Katalon_Studio_Engine_Linux_64-9.6.0/katalonc \
+          xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" \
+          ./Katalon_Studio_Engine_Linux_64-9.6.0/katalonc \
           -noSplash \
           -runMode=console \
           -projectPath="$(pwd)/Automation SFWEB.prj" \
@@ -39,7 +40,8 @@ jobs:
           -retry=0 \
           -testCasePath="Test Cases/Smartfren/TC_Topup_Balance_DANA" \
           -executionProfile="default" \
-          -browserType="Chrome (headless)"
+          -browserType="Chrome"
+
 
 
       - name: Upload Report
