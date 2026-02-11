@@ -114,6 +114,6 @@ WebUI.waitForElementClickable(findTestObject('Object Repository/TC_Topup_Balance
 WebUI.click(findTestObject('Object Repository/TC_Topup_Balance_DANA/DANA/btn_final_pay'))
 
 WebUI.delay(10)
-WebUI.takeScreenshot()
+
 
 WebUI.closeBrowser()
